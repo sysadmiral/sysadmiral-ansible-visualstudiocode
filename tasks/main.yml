@@ -1,0 +1,17 @@
+---
+# tasks file for sysadmiral-ansible-role-visualstudiocode
+- name: set os specific variables
+  include_vars: "{{ ansible_os_family }}.yml"
+
+- name: set vscode_repository_url
+  set_fact:
+    vscode_repository_url: "{{ __vscode_repository_url }}"
+  when: vscode_repo_url is not defined
+
+- name: set microsoft_signing_key_url
+  set_fact:
+    microsoft_signing_key_url: "{{ __microsoft_signing_key_url }}"
+  when: microsoft_signing_key_url is not defined
+
+- import_tasks: setup-RedHat.yml
+  when: ansible_os_family == 'RedHat'

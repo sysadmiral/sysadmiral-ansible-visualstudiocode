@@ -1,0 +1,22 @@
+galaxy_info:
+  author: sysadmiral
+  description: Visual Studio Code editor
+  company: "sysadmiral.xyz"
+  license: license (BSD,MIT)
+  min_ansible_version: 2.2
+  platforms:
+  - name: Fedora
+    versions:
+    - all
+  - name: CentOS
+    versions:
+    - 6
+    - 7
+  - name: EL
+    versions:
+    - 6
+    - 7
+  galaxy_tags: 
+    - development
+    - installer
+    - editor

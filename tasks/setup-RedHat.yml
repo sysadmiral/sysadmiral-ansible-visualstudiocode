@@ -1,0 +1,29 @@
+---
+- name: import microsoft signing key
+  rpm_key:
+    state: present
+    key: "{{ microsoft_signing_key_url }}"
+
+- name: setup vscode repository
+  yum_repository:
+    name: vscode
+    description: Visual Studio Code
+    baseurl: "{{ vscode_repository_url }}"
+    gpgkey: "{{ microsoft_signing_key_url }}"
+    gpgcheck: yes
+
+- name: install vscode with yum
+  yum:
+    name: code
+    state: latest
+    update_cache: yes
+  when:
+    - ansible_pkg_mgr == "yum"
+
+- name: install vscode with dnf
+  dnf:
+    name: code
+    state: present
+  when:
+    - ansible_pkg_mgr == "dnf"
+    

@@ -23,7 +23,7 @@
 - name: install vscode with dnf
   dnf:
     name: code
-    state: present
+    state: latest
   when:
     - ansible_pkg_mgr == "dnf"
     

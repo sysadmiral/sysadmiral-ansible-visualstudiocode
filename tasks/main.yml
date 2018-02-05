@@ -13,5 +13,5 @@
     microsoft_signing_key_url: "{{ __microsoft_signing_key_url }}"
   when: microsoft_signing_key_url is not defined
 
-- import_tasks: setup-RedHat.yml
+- include_tasks: setup-{{ ansible_os_family }}.yml
   when: ansible_os_family == 'RedHat'
